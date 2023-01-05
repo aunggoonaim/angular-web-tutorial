@@ -1,3 +1,8 @@
-<p>
-  home works!
-</p>
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="loading()">Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<mat-progress-spinner class="w-[50px] h-[50px] color-black" [mode]="mode" [value]="value" *ngIf="checked">
+</mat-progress-spinner>
