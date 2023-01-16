@@ -1,3 +1,83 @@
-<p>
-  register works!
-</p>
+<app-loading *ngIf="loading"></app-loading>
+<div class="bg-background w-full h-full">
+  <div class="w-full h-full flex justify-center align-middle items-center">
+    <div class="bg-white bg-opacity-70 shadow-2xl min-w-[540px] h-[540px] rounded-md">
+      <div class="flex justify-center w-full mt-[50px]">
+        <h1 class="text-[40px]">Tutorial Angular !</h1>
+      </div>
+      <form [formGroup]="frmGroup">
+        <div class="flex justify-center w-full">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="email" />
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </div>
+        <ng-container *ngIf="frmGroup.controls['email'].errors; then errorTemplate1; else elseTemplate1"></ng-container>
+        <ng-template #errorTemplate1>
+          <span class="text-red-600 w-full text-center mb-3" *ngIf="findKey('email')">
+            Email is invalid {{findKey('email')}} !
+          </span>
+        </ng-template>
+        <ng-template #elseTemplate1>
+          <span class="text-lime-500 w-full text-center mb-3">Ok</span>
+        </ng-template>
+        <div class="flex justify-center w-full">
+          <mat-form-field appearance="outline">
+            <mat-label>Firstname</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="firstname" />
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </div>
+        <ng-container *ngIf="frmGroup.controls['firstname'].errors; then errorTemplate2; else elseTemplate2"></ng-container>
+        <ng-template #errorTemplate2>
+          <span class="text-red-600 w-full text-center mb-3" *ngIf="findKey('firstname')">
+            Firstname is invalid {{findKey('firstname')}} !
+          </span>
+        </ng-template>
+        <ng-template #elseTemplate2>
+          <span class="text-lime-500 w-full text-center mb-3">Ok</span>
+        </ng-template>
+        <div class="flex justify-center w-full">
+          <mat-form-field appearance="outline">
+            <mat-label>Lastname</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="lastname" />
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </div>
+        <ng-container *ngIf="frmGroup.controls['lastname'].errors; then errorTemplate3; else elseTemplate3"></ng-container>
+        <ng-template #errorTemplate3>
+          <span class="text-red-600 w-full text-center mb-3" *ngIf="findKey('lastname')">
+            Lastname is invalid {{findKey('lastname')}} !
+          </span>
+        </ng-template>
+        <ng-template #elseTemplate3>
+          <span class="text-lime-500 w-full text-center mb-3">Ok</span>
+        </ng-template>
+        <div class="flex justify-center w-full">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Placeholder" type="password" formControlName="password">
+            <mat-icon matSuffix>pin</mat-icon>
+          </mat-form-field>
+        </div>
+        <ng-container *ngIf="frmGroup.controls['password'].errors; then errorTemplate4; else elseTemplate4"></ng-container>
+        <ng-template #errorTemplate4>
+          <span class="text-red-600 w-full text-center mb-3" *ngIf="findKey('password')">
+            Password is invalid {{findKey('password')}} !
+          </span>
+        </ng-template>
+        <ng-template #elseTemplate4>
+          <span class="text-lime-500 w-full text-center mb-3">Ok</span>
+        </ng-template>
+      </form>
+      <div class="flex justify-center w-full">
+        <button class="bg-sky-500 hover:bg-sky-400 flex justify-center w-[200px] h-[38px] text-white"
+          (click)="submit()">
+          <span class="mt-2">Submit Form</span>
+          <mat-icon class="ml-3 mt-2" matSuffix>login</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from 'src/components/loading/loading.component';
 
 @NgModule({
@@ -18,6 +18,7 @@ import { LoadingComponent } from 'src/components/loading/loading.component';
     MatInputModule,
     MatIconModule,
     FormsModule,
+    ReactiveFormsModule,
     LoadingComponent
   ],
   declarations: [
