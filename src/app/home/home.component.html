@@ -4,14 +4,29 @@
       <div class="w-full flex justify-evenly">
         <ng-container *ngIf="i !== 0 && i !== imageBanner.length -1 then template; else ignoreTemplate"></ng-container>
         <ng-template #template>
-          <div class="w-[250px] h-[250px] bg-white rounded-2xl shadow-xl">
+          <div class="w-[250px] h-[250px] flex justify-center items-center bg-white rounded-2xl shadow-xl">
             <!-- EMPTY CARD -->
+            <ng-container *ngIf="item.image">
+              <img src="http://localhost:8080/Upload/{{item.image}}" alt="{{item.name}}" width="200" height="200" />
+            </ng-container>
           </div>
         </ng-template>
         <ng-template #ignoreTemplate>
           <div class="w-[250px] h-[250px] flex items-center rounded-2xl"
             [ngClass]="{'justify-end': i === 0, 'justify-start': i === imageBanner.length - 1}">
             <span *ngIf="i === 0" class="fas fa-angle-left animate-bounce text-[30px]"></span>
+            <div *ngIf="i === 0 && item.image" class="w-[250px] h-[250px] flex justify-center items-center bg-white rounded-2xl shadow-xl">
+              <!-- EMPTY CARD -->
+              <ng-container *ngIf="item.image">
+                <img src="http://localhost:8080/Upload/{{item.image}}" alt="{{item.name}}" width="200" height="200" />
+              </ng-container>
+            </div>
+            <div *ngIf="i === imageBanner.length - 1 && item.image" class="w-[250px] h-[250px] flex justify-center items-center bg-white rounded-2xl shadow-xl">
+              <!-- EMPTY CARD -->
+              <ng-container *ngIf="item.image">
+                <img src="http://localhost:8080/Upload/{{item.image}}" alt="{{item.name}}" width="200" height="200" />
+              </ng-container>
+            </div>
             <span *ngIf="i === imageBanner.length - 1" class="fas fa-angle-right animate-bounce text-[30px]"></span>
           </div>
         </ng-template>

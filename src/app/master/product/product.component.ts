@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ms_product } from '.';
 import { ProductService } from './product.service';
@@ -40,6 +40,10 @@ export class ProductComponent implements OnInit {
         this.loadData();
       }
     })
+  }
+
+  viewImage(filename: string) {
+    window.open(`http://localhost:8080/Upload/${filename}`, '_blank');
   }
 
 }

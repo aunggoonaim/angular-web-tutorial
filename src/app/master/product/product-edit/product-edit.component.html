@@ -4,12 +4,28 @@
       <form class="w-[400px]" [formGroup]="form">
         <div class="w-full flex justify-center mt-3">
           <label for="name"></label>
-          <input type="text" placeholder="Product Name" class="border-gray-300 border-solid border-[1px]" formControlName="name" />
+          <input type="text" placeholder="Product Name" class="border-gray-300 border-solid border-[1px]"
+            formControlName="name" />
         </div>
         <div class="w-full flex justify-center mt-3">
           <label for="price"></label>
-          <input type="number" placeholder="Product Price" class="border-gray-300 border-solid border-[1px]" formControlName="price" />
+          <input type="number" placeholder="Product Price" class="border-gray-300 border-solid border-[1px]"
+            formControlName="price" />
         </div>
+        <div class="w-full flex justify-center mt-3">
+          <label for="price"></label>
+          <button type="button" aria-label="upload"
+            class="w-[30px] h-[30px] bg-pink-600 hover:bg-pink-500 rounded-lg text-white" (click)="uploadTag.click()">
+            <span class="fas fa-upload ml-2 mr-3"></span>
+          </button>
+          <button type="button" aria-label="view" class="w-[30px] h-[30px] bg-sky-600 hover:bg-sky-500 rounded-lg text-white ml-4"
+            (click)="viewImage(form.value.image)" *ngIf="form.value.image">
+            <span class="fas fa-eye ml-2 mr-3"></span>
+          </button>
+          <input id="uploadTag" type="file" class="hidden" accept="image/png" placeholder="upload"
+            (change)="uploadImage($event)" #uploadTag />
+        </div>
+
       </form>
     </div>
     <div class="w-full flex justify-center mt-3 mb-3">

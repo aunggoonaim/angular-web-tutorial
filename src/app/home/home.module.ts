@@ -21,6 +21,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SheetComponent } from './sheet/sheet.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HomeService } from './home.service';
 
 const moment = _moment;
 
@@ -61,6 +62,7 @@ export const MY_FORMATS = {
   ],
   declarations: [HomeComponent, SheetComponent],
   providers: [
+    HomeService,
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,

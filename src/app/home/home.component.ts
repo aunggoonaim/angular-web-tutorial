@@ -4,6 +4,8 @@ import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-shee
 import { ThemePalette } from '@angular/material/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ms_product } from '../master/product';
+import { HomeService } from './home.service';
 import { SheetComponent } from './sheet/sheet.component';
 
 
@@ -18,14 +20,7 @@ export class HomeComponent implements OnInit {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'indeterminate';
   value = 50;
-  imageBanner = [
-    {},
-    {},
-    {},
-    {},
-    {},
-    {}
-  ];
+  imageBanner: ms_product[] = [];
   imageItems = [
     {},
     {},
@@ -41,7 +36,14 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('acc1') accordion!: MatAccordion;
 
-  constructor(private _bottomSheet: MatBottomSheet) { }
+  constructor(private _bottomSheet: MatBottomSheet, private service: HomeService) {
+    this.service.get().subscribe({
+      next: (response) => {
+        this.imageBanner = response;
+        console.log(this.imageBanner);
+      }
+    });
+  }
 
   ngOnInit(): void {
   }

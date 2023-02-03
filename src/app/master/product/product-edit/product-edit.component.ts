@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ms_product } from '..';
@@ -10,6 +10,8 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
+
+  @ViewChild('uploadTag') uploadTag!: ElementRef<HTMLInputElement>;
 
   form?: FormGroup;
   constructor(
@@ -34,7 +36,7 @@ export class ProductEditComponent implements OnInit {
       id: new FormControl(frm?.id ?? 0),
       name: new FormControl(frm?.name ?? ''),
       price: new FormControl(frm?.price ?? 0),
-      image: new FormControl()
+      image: new FormControl(frm?.image)
     });
   }
 
@@ -76,4 +78,23 @@ export class ProductEditComponent implements OnInit {
     });
   }
 
+  uploadImage($event: any) {
+    const fileHtml = document.getElementById('uploadTag') as any;
+    const file = fileHtml.files[0] as File;
+    this.service.upload(file).subscribe({
+      next: (response) => {
+        this.form?.controls['image'].patchValue(response.fileName);
+        this.uploadTag.nativeElement.value = '';
+        this.uploadTag.nativeElement.files = null;
+      },
+      error: (err) => {
+        this.uploadTag.nativeElement.value = '';
+        this.uploadTag.nativeElement.files = null;
+      }
+    })
+  }
+
+  viewImage(filename: string) {
+    window.open(`http://localhost:8080/Upload/${filename}`, '_blank');
+  }
 }
