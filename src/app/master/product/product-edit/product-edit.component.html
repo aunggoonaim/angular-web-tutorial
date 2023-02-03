@@ -1,0 +1,22 @@
+<div class="w-full min-h-[calc(100vh_-_140px)] bg-gray-300 p-4">
+  <div class="w-full rounded-xl bg-white shadow-xl min-h-[200px] p-2">
+    <div class="w-full flex justify-center" *ngIf="form">
+      <form class="w-[400px]" [formGroup]="form">
+        <div class="w-full flex justify-center mt-3">
+          <label for="name"></label>
+          <input type="text" placeholder="Product Name" class="border-gray-300 border-solid border-[1px]" formControlName="name" />
+        </div>
+        <div class="w-full flex justify-center mt-3">
+          <label for="price"></label>
+          <input type="number" placeholder="Product Price" class="border-gray-300 border-solid border-[1px]" formControlName="price" />
+        </div>
+      </form>
+    </div>
+    <div class="w-full flex justify-center mt-3 mb-3">
+      <button class="w-[200px] h-[40px] bg-red-600 hover:bg-red-500 rounded-lg text-white" (click)="save()">
+        <span class="fas fa-save mr-3"></span>
+        Save
+      </button>
+    </div>
+  </div>
+</div>

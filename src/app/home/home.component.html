@@ -1,8 +1,34 @@
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="loading()">Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+<div class="w-full h-[300px] bg-gray-300 flex justify-center">
+  <div class="grid grid-cols-6 w-full pt-5">
+    <ng-container *ngFor="let item of imageBanner; let i = index;">
+      <div class="w-full flex justify-evenly">
+        <ng-container *ngIf="i !== 0 && i !== imageBanner.length -1 then template; else ignoreTemplate"></ng-container>
+        <ng-template #template>
+          <div class="w-[250px] h-[250px] bg-white rounded-2xl shadow-xl">
+            <!-- EMPTY CARD -->
+          </div>
+        </ng-template>
+        <ng-template #ignoreTemplate>
+          <div class="w-[250px] h-[250px] flex items-center rounded-2xl"
+            [ngClass]="{'justify-end': i === 0, 'justify-start': i === imageBanner.length - 1}">
+            <span *ngIf="i === 0" class="fas fa-angle-left animate-bounce text-[30px]"></span>
+            <span *ngIf="i === imageBanner.length - 1" class="fas fa-angle-right animate-bounce text-[30px]"></span>
+          </div>
+        </ng-template>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div class="w-full h-[60px] flex justify-left bg-sky-300 pl-3 pt-5">
+  <h1>หมวดหมู่</h1>
+</div>
+<div class="w-full h-[200px] flex justify-center bg-sky-300 pt-5">
+  <ng-container *ngFor="let item of imageItems; let i = index;">
+    <div class="max-w-[120px] flex justify-center">
+      <div class="border-[1px] border-gray-500 border-solid h-[150px] w-[120px] max-w-[120px]"
+      [ngClass]="{'border-r-0': i !== imageItems.length - 1}">
 
-<mat-progress-spinner class="w-[50px] h-[50px] color-black" [mode]="mode" [value]="value" *ngIf="checked">
-</mat-progress-spinner>
+      </div>
+    </div>
+  </ng-container>
+</div>

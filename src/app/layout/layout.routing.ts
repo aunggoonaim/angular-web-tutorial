@@ -8,7 +8,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'index', pathMatch: 'full' },
       { path: 'index', loadChildren: () => import('../home/home.module').then(x => x.HomeModule) },
-      { path: 'profile', loadChildren: () => import('../profile/profile.module').then(x => x.ProfileModule) }
+      { path: 'profile', loadChildren: () => import('../profile/profile.module').then(x => x.ProfileModule) },
+      { path: 'master', loadChildren: () => import('../master/master.module').then(x => x.MasterModule) }
     ]
   }
 ];
